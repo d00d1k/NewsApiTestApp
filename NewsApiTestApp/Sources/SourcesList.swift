@@ -1,5 +1,5 @@
 //
-//  Source.swift
+//  SourcesList.swift
 //  NewsApiTestApp
 //
 //  Created by Nikita Kalyuzhnyy on 15.08.2020.
@@ -8,12 +8,9 @@
 
 import Foundation
 
-struct Source: Codable {
+struct SourcesList: Codable {
     
-    var id: String?
-    var name: String?
+    var status: String = ""
+    var sources: [Source]?
     
-    
-    
-
 }

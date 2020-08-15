@@ -14,13 +14,11 @@ class NewsChannelCell: UITableViewCell {
     @IBOutlet weak var newsChannelTitleLabel: UILabel!
     @IBOutlet weak var newsChannelDescriptionLabel: UILabel!
 
-    func setTitle(title: News) {
+    func setTitle(title: Source) {
         newsChannelDescriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
         newsChannelTitleLabel.text = "Source name"
     }
-    
-    
- 
+
 }
 
 
