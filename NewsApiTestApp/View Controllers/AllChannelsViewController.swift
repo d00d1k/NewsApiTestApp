@@ -11,9 +11,20 @@ import UIKit
 class AllChannelsViewController: UIViewController {
     
     var sources = [Source]()
-    var favouriteSource: [String] = []
+    var favouriteSource: NSMutableArray = []
+    
+    private let defaults = UserDefaults.standard
     
     @IBOutlet weak var tableView: UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        if defaults.object(forKey: "favouriteSourceList") != nil {
+            favouriteSource = NSMutableArray.init(array: defaults.object(forKey: "favouriteSourceList") as! NSMutableArray)
+        }
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,22 +62,25 @@ extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
-    @objc func addToFavorites(sender: UIButton) {
+    @objc private func addToFavorites(sender: UIButton) {
         
         let cell = self.tableView.cellForRow(at: IndexPath.init(row: sender.tag, section: 0)) as! NewsChannelCell
         
         if favouriteSource.contains(cell.newsChannelTitleLabel.text!) {
+
+            let index = favouriteSource.index(of: cell.newsChannelTitleLabel.text!)
             
-            if let index = favouriteSource.firstIndex(of: cell.newsChannelTitleLabel.text!) {
-                favouriteSource.remove(at: index)
-            }
+            favouriteSource.removeObject(at: index)
+            
         } else {
-            favouriteSource.append(cell.newsChannelTitleLabel.text!)
+            
+            favouriteSource.add(cell.newsChannelTitleLabel.text!)
         }
 
         print(favouriteSource)
         
         tableView.reloadData()
+        defaults.setValue(favouriteSource, forKeyPath: "favouriteSourceList")
     }
 }
 
