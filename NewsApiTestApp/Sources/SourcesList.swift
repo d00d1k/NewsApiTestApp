@@ -12,5 +12,4 @@ struct SourcesList: Codable {
     
     var status: String = ""
     var sources: [Source]?
-    
 }

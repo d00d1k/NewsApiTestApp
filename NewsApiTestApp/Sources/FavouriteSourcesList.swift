@@ -8,9 +8,11 @@
 
 import Foundation
 
-class SourceDataLoader {
+class FavouriteSourcesList {
+ 
+    var favouriteSource: [String]
     
-    //init
-    
-    
+    init(favouriteSource: [String]) {
+        self.favouriteSource = favouriteSource
+    }
 }

@@ -11,7 +11,8 @@ import UIKit
 class AllChannelsViewController: UIViewController {
     
     var sources = [Source]()
-
+    var favouriteSource: [String] = []
+    
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -21,9 +22,7 @@ class AllChannelsViewController: UIViewController {
         tableView.dataSource = self
         
         getSource()
- 
     }
-  
 }
 
 extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -39,11 +38,36 @@ extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource 
 
         cell.newsChannelTitleLabel.text = sources[indexPath.row].name
         cell.newsChannelDescriptionLabel.text = sources[indexPath.row].description
-
-        return cell
         
+        if favouriteSource.contains(cell.newsChannelTitleLabel.text!) {
+            cell.favouriteButton.setTitle("+", for: UIControl.State.normal)
+        } else {
+            cell.favouriteButton.setTitle("-", for: UIControl.State.normal)
+        }
+        
+        cell.favouriteButton.tag = indexPath.row
+        cell.favouriteButton.addTarget(self, action: #selector(addToFavorites), for: UIControl.Event.touchUpInside)
+        
+        return cell
     }
+    
+    @objc func addToFavorites(sender: UIButton) {
+        
+        let cell = self.tableView.cellForRow(at: IndexPath.init(row: sender.tag, section: 0)) as! NewsChannelCell
+        
+        if favouriteSource.contains(cell.newsChannelTitleLabel.text!) {
+            
+            if let index = favouriteSource.firstIndex(of: cell.newsChannelTitleLabel.text!) {
+                favouriteSource.remove(at: index)
+            }
+        } else {
+            favouriteSource.append(cell.newsChannelTitleLabel.text!)
+        }
 
+        print(favouriteSource)
+        
+        tableView.reloadData()
+    }
 }
 
 extension AllChannelsViewController {
@@ -76,34 +100,6 @@ extension AllChannelsViewController {
                                         
                 } catch {
                     debugPrint("json err pars")
-                }
-            }
-        }
-        
-        dataTask.resume()
-    }
-    
-    func getNewsFeed() {
-        
-        let urlString = "http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=9fd70f07e78145cdae567b8442c6c749"
-        let url = URL(string: urlString)
-        
-        guard url != nil else {
-            debugPrint("url is nil")
-            return
-        }
-        
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: url!) { (data, response, error) in
-            if error == nil && data != nil {
-                //parse JSON
-                let decoder = JSONDecoder()
-                
-                do {
-                    let newsFeed = try decoder.decode(NewsFeed.self, from: data!)
-                    print("json res -> \(newsFeed)")
-                } catch {
-                    debugPrint("jjson err pars")
                 }
             }
         }

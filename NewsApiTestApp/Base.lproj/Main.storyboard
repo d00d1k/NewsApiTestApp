@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -17,14 +17,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Third View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kdY-qc-QOO">
-                                <rect key="frame" x="125" y="427" width="164" height="43"/>
+                                <rect key="frame" x="124" y="427" width="165" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsR-rC-t3T">
-                                <rect key="frame" x="100" y="478" width="215" height="17"/>
+                                <rect key="frame" x="100" y="478" width="214" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="140" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="498-ld-2mg">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TestCell" id="ZVt-Vu-FLW" customClass="NewsChannelCell" customModule="NewsApiTestApp" customModuleProvider="target">
@@ -65,17 +65,33 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1HU-p1-M4O">
-                                                    <rect key="frame" x="12" y="61" width="390" height="61"/>
+                                                    <rect key="frame" x="12" y="61" width="303.33333333333331" height="61"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFn-WU-TwZ">
+                                                    <rect key="frame" x="340" y="59" width="54" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="dFn-WU-TwZ" secondAttribute="height" multiplier="1:1" id="lgt-yu-aJA"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="Test">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addToFavoutiteButton:" destination="ZVt-Vu-FLW" eventType="touchUpInside" id="gKS-CH-vBf"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1HU-p1-M4O" firstAttribute="leading" secondItem="FQr-nh-cUA" secondAttribute="leading" constant="12" id="Uy9-Fj-eOG"/>
-                                                <constraint firstAttribute="trailing" secondItem="1HU-p1-M4O" secondAttribute="trailing" constant="12" id="cnM-vr-uRX"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4SQ-PM-SIh" secondAttribute="trailing" constant="20" symbolic="YES" id="BcE-Ef-Ly1"/>
+                                                <constraint firstItem="dFn-WU-TwZ" firstAttribute="trailing" secondItem="FQr-nh-cUA" secondAttribute="trailingMargin" constant="-11" id="NUC-Im-kZp"/>
+                                                <constraint firstItem="dFn-WU-TwZ" firstAttribute="top" secondItem="FQr-nh-cUA" secondAttribute="topMargin" constant="48" id="Sh0-aX-D47"/>
+                                                <constraint firstItem="1HU-p1-M4O" firstAttribute="leading" secondItem="FQr-nh-cUA" secondAttribute="leading" constant="12" id="TfD-SH-WMU"/>
                                                 <constraint firstItem="4SQ-PM-SIh" firstAttribute="top" secondItem="FQr-nh-cUA" secondAttribute="top" constant="5" id="k8f-qQ-hV6"/>
-                                                <constraint firstItem="1HU-p1-M4O" firstAttribute="top" secondItem="4SQ-PM-SIh" secondAttribute="bottom" constant="14" id="ug4-hL-0cq"/>
+                                                <constraint firstItem="1HU-p1-M4O" firstAttribute="top" secondItem="4SQ-PM-SIh" secondAttribute="bottom" constant="14" id="pBA-af-NFy"/>
+                                                <constraint firstItem="dFn-WU-TwZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1HU-p1-M4O" secondAttribute="trailing" constant="29" id="u0p-Ob-qrT"/>
                                                 <constraint firstItem="4SQ-PM-SIh" firstAttribute="leading" secondItem="FQr-nh-cUA" secondAttribute="leading" constant="12" id="wQW-Md-yBB"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -83,6 +99,7 @@
                                             <bool key="isElement" value="YES"/>
                                         </accessibility>
                                         <connections>
+                                            <outlet property="favouriteButton" destination="dFn-WU-TwZ" id="kEM-hb-d3G"/>
                                             <outlet property="newsChannelDescriptionLabel" destination="1HU-p1-M4O" id="ohe-eF-AeU"/>
                                             <outlet property="newsChannelTitleLabel" destination="4SQ-PM-SIh" id="emt-Mf-7d3"/>
                                         </connections>
@@ -94,13 +111,23 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="cH7-oZ-lMQ"/>
                                 </connections>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29s-dQ-2Du">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem title="All channels" id="mjT-eg-9uP"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="29s-dQ-2Du" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="3ht-od-Mxo"/>
+                            <constraint firstItem="29s-dQ-2Du" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="MQd-lA-sxz"/>
                             <constraint firstItem="498-ld-2mg" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="WlJ-g8-Te6"/>
                             <constraint firstItem="498-ld-2mg" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="ZlO-fO-zPW"/>
-                            <constraint firstItem="498-ld-2mg" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="mA4-zb-Eyc"/>
+                            <constraint firstItem="498-ld-2mg" firstAttribute="top" secondItem="29s-dQ-2Du" secondAttribute="bottom" id="elr-Wq-tau"/>
                             <constraint firstItem="498-ld-2mg" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="pJH-Sq-7HZ"/>
+                            <constraint firstItem="29s-dQ-2Du" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="v1U-nr-zaQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
@@ -122,12 +149,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="99.5" y="477.5" width="215" height="17"/>
+                                <rect key="frame" x="99.666666666666686" y="477.66666666666669" width="215" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="106" y="426.5" width="202" height="43"/>
+                                <rect key="frame" x="106" y="426.66666666666669" width="202" height="43"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="highlightedColor"/>
