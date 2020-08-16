@@ -25,6 +25,7 @@
 		EBFB186424E6D18800079BBB /* NewsApiTestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFB186324E6D18800079BBB /* NewsApiTestAppTests.swift */; };
 		EBFB186F24E6D18800079BBB /* NewsApiTestAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFB186E24E6D18800079BBB /* NewsApiTestAppUITests.swift */; };
 		EBFB187E24E6E50200079BBB /* SearchVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFB187D24E6E50200079BBB /* SearchVIewController.swift */; };
+		EBFC7E4824E9704B009AA6B4 /* FavouriteSourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFC7E4724E9704B009AA6B4 /* FavouriteSourceCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		EBFB186E24E6D18800079BBB /* NewsApiTestAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApiTestAppUITests.swift; sourceTree = "<group>"; };
 		EBFB187024E6D18800079BBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBFB187D24E6E50200079BBB /* SearchVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVIewController.swift; sourceTree = "<group>"; };
+		EBFC7E4724E9704B009AA6B4 /* FavouriteSourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteSourceCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				EBEE498724E7031700B9C024 /* NewsChannelCell.swift */,
+				EBFC7E4724E9704B009AA6B4 /* FavouriteSourceCell.swift */,
 				EBEE498924E70C4400B9C024 /* News.swift */,
 				EBFB185224E6D18600079BBB /* Main.storyboard */,
 				EBFB185724E6D18700079BBB /* LaunchScreen.storyboard */,
@@ -334,6 +337,7 @@
 				EBFB187E24E6E50200079BBB /* SearchVIewController.swift in Sources */,
 				EBCCF6E124E7EE4700EC4FE3 /* SourcesList.swift in Sources */,
 				EBCCF6D924E7E49D00EC4FE3 /* NewsFeed.swift in Sources */,
+				EBFC7E4824E9704B009AA6B4 /* FavouriteSourceCell.swift in Sources */,
 				EBFB185124E6D18600079BBB /* FavoriteСhannelsViewController.swift in Sources */,
 				EBCCF6DD24E7E86F00EC4FE3 /* Article.swift in Sources */,
 				EBFB184F24E6D18600079BBB /* AllChannelsViewController.swift in Sources */,

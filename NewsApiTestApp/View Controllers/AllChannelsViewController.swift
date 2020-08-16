@@ -11,9 +11,9 @@ import UIKit
 class AllChannelsViewController: UIViewController {
     
     var sources = [Source]()
-    var favouriteSource: NSMutableArray = []
+    var favouriteSource: [String] = []
     
-    private let defaults = UserDefaults.standard
+    let defaults = UserDefaults.standard
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,9 +21,8 @@ class AllChannelsViewController: UIViewController {
         super.viewWillAppear(true)
         
         if defaults.object(forKey: "favouriteSourceList") != nil {
-            favouriteSource = NSMutableArray.init(array: defaults.object(forKey: "favouriteSourceList") as! NSMutableArray)
+            favouriteSource = defaults.object(forKey: "favouriteSourceList") as? [String] ?? [String]()
         }
-        
     }
 
     override func viewDidLoad() {
@@ -32,6 +31,9 @@ class AllChannelsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        defaults.synchronize()
+        print("sources->\(sources)")
+
         getSource()
     }
 }
@@ -67,20 +69,20 @@ extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = self.tableView.cellForRow(at: IndexPath.init(row: sender.tag, section: 0)) as! NewsChannelCell
         
         if favouriteSource.contains(cell.newsChannelTitleLabel.text!) {
-
-            let index = favouriteSource.index(of: cell.newsChannelTitleLabel.text!)
             
-            favouriteSource.removeObject(at: index)
+            if let index = favouriteSource.firstIndex(of: cell.newsChannelTitleLabel.text!) {
+                favouriteSource.remove(at: index)
+            }
             
         } else {
             
-            favouriteSource.add(cell.newsChannelTitleLabel.text!)
+            favouriteSource.append(cell.newsChannelTitleLabel.text!)
         }
-
-        print(favouriteSource)
         
         tableView.reloadData()
         defaults.setValue(favouriteSource, forKeyPath: "favouriteSourceList")
+        defaults.synchronize()
+        print(defaults.value(forKeyPath: "favouriteSourceList") as! [String])
     }
 }
 
@@ -104,7 +106,7 @@ extension AllChannelsViewController {
                 
                 do {
                     let getSources = try decoder.decode(Sources.self, from: data!)
-                    print("json res -> \(getSources)")
+                    //print("json res -> \(getSources)")
                     
                     self.sources = getSources.sources
                     
