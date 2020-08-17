@@ -105,6 +105,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		EB9C697A24EA8F260065AC59 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EBEE498724E7031700B9C024 /* NewsChannelCell.swift */,
+				EBFC7E4724E9704B009AA6B4 /* FavouriteSourceCell.swift */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
 		EBCCF6DF24E7EDFE00EC4FE3 /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,13 +168,12 @@
 		EBFB184924E6D18600079BBB /* NewsApiTestApp */ = {
 			isa = PBXGroup;
 			children = (
-				EBEE498724E7031700B9C024 /* NewsChannelCell.swift */,
-				EBFC7E4724E9704B009AA6B4 /* FavouriteSourceCell.swift */,
 				EBEE498924E70C4400B9C024 /* News.swift */,
 				EBFB185224E6D18600079BBB /* Main.storyboard */,
 				EBFB185724E6D18700079BBB /* LaunchScreen.storyboard */,
 				EBCCF6E424E7F0B300EC4FE3 /* Sources */,
 				EBCCF6DF24E7EDFE00EC4FE3 /* NewsFeed */,
+				EB9C697A24EA8F260065AC59 /* Custom Cells */,
 				EBEE498B24E7187A00B9C024 /* View Controllers */,
 				EBFB185524E6D18700079BBB /* Assets.xcassets */,
 				EBFB185A24E6D18700079BBB /* Info.plist */,

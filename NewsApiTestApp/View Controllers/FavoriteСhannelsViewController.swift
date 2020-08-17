@@ -9,15 +9,18 @@
 import UIKit
 
 class FavoriteСhannelsViewController: UIViewController {
+    
+    
         
     let defaults = UserDefaults()
-    lazy var favouritesList = defaults.value(forKeyPath: "favouriteSourceList") as? [String] ?? [""]
+    lazy var favouritesList = defaults.value(forKeyPath: "favouriteSourceList") as? [String:String] ?? [:]
     
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+        print("viewWillAppear > \(favouritesList)")
     }
     
     override func viewDidLoad() {
@@ -28,15 +31,18 @@ class FavoriteСhannelsViewController: UIViewController {
     }
 }
 
+//MARK: - Table View Extension
 extension FavoriteСhannelsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if favouritesList != [""]  {
-            favouritesList = defaults.value(forKeyPath: "favouriteSourceList") as! [String]
-        } else {
-            return 0
-        }
+        favouritesList = defaults.value(forKeyPath: "favouriteSourceList") as! [String:String]
+        
+//        if favouritesList != [:]  {
+//            favouritesList = defaults.value(forKeyPath: "favouriteSourceList") as! [String:String]
+//        } else {
+//            return 0
+//        }
 
         print("arrayLength->\(favouritesList)")
         print(favouritesList.count)
@@ -49,7 +55,7 @@ extension FavoriteСhannelsViewController: UITableViewDataSource, UITableViewDel
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "favouriteNameCell", for: indexPath) as? FavouriteSourceCell else {
         return UITableViewCell() }
         
-        cell.favouriteNameCell.text = favouritesList[indexPath.row]
+        cell.favouriteNameCell.text = Array(favouritesList.values.sorted())[indexPath.row]
         
         return cell
     }
@@ -58,11 +64,15 @@ extension FavoriteСhannelsViewController: UITableViewDataSource, UITableViewDel
         
         if editingStyle == .delete {
             
-            let index = favouritesList.firstIndex(of: (favouritesList[indexPath.row]))
-            print(index!)
-            favouritesList.remove(at: index!)
+            if let index = favouritesList.values.firstIndex(of: Array(favouritesList.values)[indexPath.row]){
+                favouritesList.remove(at: index)
+                
+            }
             
             defaults.setValue(favouritesList, forKeyPath: "favouriteSourceList")
+            
+            print("dict after delete\(favouritesList)")
+            
     
             print("favouritesList after delete \(favouritesList)")
             

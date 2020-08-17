@@ -11,7 +11,7 @@ import UIKit
 class AllChannelsViewController: UIViewController {
     
     var sources = [Source]()
-    var favouriteSource: [String] = []
+    var favouriteSource: [String:String] = [:]
     
     let defaults = UserDefaults.standard
     
@@ -22,7 +22,7 @@ class AllChannelsViewController: UIViewController {
         tableView.reloadData()
                 
         if defaults.object(forKey: "favouriteSourceList") != nil {
-            favouriteSource = defaults.object(forKey: "favouriteSourceList") as? [String] ?? [String]()
+            favouriteSource = defaults.object(forKey: "favouriteSourceList") as? [String:String] ?? [String:String]()
         }
     }
 
@@ -49,12 +49,14 @@ extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource 
 
         cell.newsChannelTitleLabel.text = sources[indexPath.row].name
         cell.newsChannelDescriptionLabel.text = sources[indexPath.row].description
-        
-        if favouriteSource.contains(cell.newsChannelTitleLabel.text!) {
+
+        if favouriteSource.values.contains(cell.newsChannelTitleLabel.text!) {
             cell.favouriteButton.setTitle("+", for: UIControl.State.normal)
         } else {
             cell.favouriteButton.setTitle("-", for: UIControl.State.normal)
         }
+        
+        //print(favouriteSource)
         
         cell.favouriteButton.tag = indexPath.row
         cell.favouriteButton.addTarget(self, action: #selector(addToFavorites), for: UIControl.Event.touchUpInside)
@@ -66,17 +68,18 @@ extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource 
         
         let cell = self.tableView.cellForRow(at: IndexPath.init(row: sender.tag, section: 0)) as! NewsChannelCell
         
-        if favouriteSource.contains(cell.newsChannelTitleLabel.text!) {
+        if favouriteSource.values.contains(cell.newsChannelTitleLabel.text!) {
             
-            if let index = favouriteSource.firstIndex(of: cell.newsChannelTitleLabel.text!) {
+            if let index = favouriteSource.values.firstIndex(of: cell.newsChannelTitleLabel.text!) {
                 favouriteSource.remove(at: index)
             }
         } else {
-            
-            favouriteSource.append(cell.newsChannelTitleLabel.text!)
+            favouriteSource.updateValue(cell.newsChannelTitleLabel.text!, forKey:sources[cell.favouriteButton.tag].id!)
         }
         
+        print("addToFavorites \(favouriteSource)")
         tableView.reloadData()
+        
         defaults.setValue(favouriteSource, forKeyPath: "favouriteSourceList")
         defaults.synchronize()
     }
