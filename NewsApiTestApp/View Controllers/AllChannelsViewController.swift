@@ -19,7 +19,8 @@ class AllChannelsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+        tableView.reloadData()
+                
         if defaults.object(forKey: "favouriteSourceList") != nil {
             favouriteSource = defaults.object(forKey: "favouriteSourceList") as? [String] ?? [String]()
         }
@@ -31,9 +32,6 @@ class AllChannelsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        defaults.synchronize()
-        print("sources->\(sources)")
-
         getSource()
     }
 }
@@ -73,7 +71,6 @@ extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource 
             if let index = favouriteSource.firstIndex(of: cell.newsChannelTitleLabel.text!) {
                 favouriteSource.remove(at: index)
             }
-            
         } else {
             
             favouriteSource.append(cell.newsChannelTitleLabel.text!)
@@ -82,7 +79,6 @@ extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource 
         tableView.reloadData()
         defaults.setValue(favouriteSource, forKeyPath: "favouriteSourceList")
         defaults.synchronize()
-        print(defaults.value(forKeyPath: "favouriteSourceList") as! [String])
     }
 }
 

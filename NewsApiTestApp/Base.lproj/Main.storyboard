@@ -65,15 +65,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1HU-p1-M4O">
-                                                    <rect key="frame" x="12" y="61" width="303.33333333333331" height="61"/>
+                                                    <rect key="frame" x="12" y="61" width="309.33333333333331" height="61"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFn-WU-TwZ">
-                                                    <rect key="frame" x="340" y="59" width="54" height="35"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFn-WU-TwZ">
+                                                    <rect key="frame" x="363" y="59" width="37" height="35"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="dFn-WU-TwZ" secondAttribute="height" multiplier="1:1" id="lgt-yu-aJA"/>
+                                                        <constraint firstAttribute="height" constant="35" id="xgL-by-dnp"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal" title="Test">
@@ -85,13 +85,15 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="1HU-p1-M4O" secondAttribute="trailing" constant="92.666666666666686" id="3Cw-0b-9d9"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4SQ-PM-SIh" secondAttribute="trailing" constant="20" symbolic="YES" id="BcE-Ef-Ly1"/>
-                                                <constraint firstItem="dFn-WU-TwZ" firstAttribute="trailing" secondItem="FQr-nh-cUA" secondAttribute="trailingMargin" constant="-11" id="NUC-Im-kZp"/>
+                                                <constraint firstItem="dFn-WU-TwZ" firstAttribute="trailing" secondItem="FQr-nh-cUA" secondAttribute="trailingMargin" constant="6" id="NUC-Im-kZp"/>
                                                 <constraint firstItem="dFn-WU-TwZ" firstAttribute="top" secondItem="FQr-nh-cUA" secondAttribute="topMargin" constant="48" id="Sh0-aX-D47"/>
                                                 <constraint firstItem="1HU-p1-M4O" firstAttribute="leading" secondItem="FQr-nh-cUA" secondAttribute="leading" constant="12" id="TfD-SH-WMU"/>
                                                 <constraint firstItem="4SQ-PM-SIh" firstAttribute="top" secondItem="FQr-nh-cUA" secondAttribute="top" constant="5" id="k8f-qQ-hV6"/>
                                                 <constraint firstItem="1HU-p1-M4O" firstAttribute="top" secondItem="4SQ-PM-SIh" secondAttribute="bottom" constant="14" id="pBA-af-NFy"/>
                                                 <constraint firstItem="dFn-WU-TwZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1HU-p1-M4O" secondAttribute="trailing" constant="29" id="u0p-Ob-qrT"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="dFn-WU-TwZ" secondAttribute="bottom" constant="35" id="vwz-k1-2jq"/>
                                                 <constraint firstItem="4SQ-PM-SIh" firstAttribute="leading" secondItem="FQr-nh-cUA" secondAttribute="leading" constant="12" id="wQW-Md-yBB"/>
                                             </constraints>
                                         </tableViewCellContentView>
