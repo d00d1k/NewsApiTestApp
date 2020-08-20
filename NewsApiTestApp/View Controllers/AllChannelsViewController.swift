@@ -56,8 +56,8 @@ extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource 
             cell.favouriteButton.setTitle("-", for: UIControl.State.normal)
         }
         
-        //print(favouriteSource)
-        
+        //print("sources\(sources)")
+                
         cell.favouriteButton.tag = indexPath.row
         cell.favouriteButton.addTarget(self, action: #selector(addToFavorites), for: UIControl.Event.touchUpInside)
         
@@ -77,7 +77,7 @@ extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource 
             favouriteSource.updateValue(cell.newsChannelTitleLabel.text!, forKey:sources[cell.favouriteButton.tag].id!)
         }
         
-        print("addToFavorites \(favouriteSource)")
+        //print("addToFavorites \(favouriteSource)")
         tableView.reloadData()
         
         defaults.setValue(favouriteSource, forKeyPath: "favouriteSourceList")
@@ -89,7 +89,7 @@ extension AllChannelsViewController {
     
     func getSource(){
         
-        let urlString = "https://newsapi.org/v2/sources?apiKey=9fd70f07e78145cdae567b8442c6c749"
+        let urlString = "https://newsapi.org/v2/sources?apiKey=debbf0c53d1a453d86c219dbde1932c1"
         let url = URL(string: urlString)
         
         guard url != nil else {
@@ -112,13 +112,11 @@ extension AllChannelsViewController {
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
-                                        
                 } catch {
                     debugPrint("json err pars")
                 }
             }
         }
-        
         dataTask.resume()
     }
 }

@@ -10,16 +10,15 @@ import UIKit
 
 class FavoriteСhannelsViewController: UIViewController {
     
-    
-        
     let defaults = UserDefaults()
-    lazy var favouritesList = defaults.value(forKeyPath: "favouriteSourceList") as? [String:String] ?? [:]
+    var favouritesList = [String:String]()
     
-    
+    @IBOutlet weak var showNewsButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    
+
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+        
         print("viewWillAppear > \(favouritesList)")
     }
     
@@ -36,17 +35,20 @@ extension FavoriteСhannelsViewController: UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        favouritesList = defaults.value(forKeyPath: "favouriteSourceList") as! [String:String]
+        print("tableView numberOfRowsInSection \(favouritesList)")
         
-//        if favouritesList != [:]  {
-//            favouritesList = defaults.value(forKeyPath: "favouriteSourceList") as! [String:String]
-//        } else {
-//            return 0
-//        }
+        favouritesList = defaults.value(forKeyPath: "favouriteSourceList") as? [String:String] ?? [:]
+        
+        if favouritesList == [:] {
+            let alert = UIAlertController(title: "", message: "Please add any source", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return 0
+        }
 
         print("arrayLength->\(favouritesList)")
         print(favouritesList.count)
-        
+
         return favouritesList.count
     }
     
@@ -63,10 +65,10 @@ extension FavoriteСhannelsViewController: UITableViewDataSource, UITableViewDel
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            
-            if let index = favouritesList.values.firstIndex(of: Array(favouritesList.values)[indexPath.row]){
+                        
+            if let index = favouritesList.values.firstIndex(of: Array(favouritesList.values.sorted())[indexPath.row]){
+                print(".delete \(favouritesList)")
                 favouritesList.remove(at: index)
-                
             }
             
             defaults.setValue(favouritesList, forKeyPath: "favouriteSourceList")
@@ -82,4 +84,3 @@ extension FavoriteСhannelsViewController: UITableViewDataSource, UITableViewDel
         }
     }
 }
-

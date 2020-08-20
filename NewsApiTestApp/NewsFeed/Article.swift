@@ -8,15 +8,22 @@
 
 import Foundation
 
+struct Articles: Codable {
+    let articles: [Article]
+    
+    init(articles: [Article]) {
+        self.articles = articles
+    }
+}
+
 struct Article: Codable {
     
-    var source: Source?
+    var source: SourceNews?
     var author: String?
     var title: String?
     var description: String?
     var url: String?
-    var urlToImage: String?
+    var urlToImage: URL?
     var publishedAt: String?
     var content: String?
-    
 }

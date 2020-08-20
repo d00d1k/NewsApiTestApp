@@ -8,10 +8,9 @@
 
 import Foundation
 
-//struct Source: Codable {
-//    
-//    var id: String?
-//    var name: String?
-//    //var decription: String?
-//    
-//}
+struct SourceNews: Codable {
+    
+    var id: String?
+    var name: String?
+    
+}
