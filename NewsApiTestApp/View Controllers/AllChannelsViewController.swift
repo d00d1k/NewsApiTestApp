@@ -20,7 +20,7 @@ class AllChannelsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
-                
+        
         if defaults.object(forKey: "favouriteSourceList") != nil {
             favouriteSource = defaults.object(forKey: "favouriteSourceList") as? [String:String] ?? [String:String]()
         }
@@ -62,6 +62,10 @@ extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource 
         cell.favouriteButton.addTarget(self, action: #selector(addToFavorites), for: UIControl.Event.touchUpInside)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @objc private func addToFavorites(sender: UIButton) {

@@ -23,8 +23,6 @@ class FavouriteNewsViewController: UIViewController {
         for newsSource in Array(favouritesList.keys) {
             getNews(newsSource: newsSource)
         }
-        
-        
     }
     
     override func viewDidLoad() {
@@ -32,9 +30,6 @@ class FavouriteNewsViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        
-        
         //getNews(newsSource: "abc-news-au")
     }
 }
@@ -51,7 +46,6 @@ extension FavouriteNewsViewController: UITableViewDelegate, UITableViewDataSourc
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsShowCell else {
             return UITableViewCell()
         }
-        
         //getNews(newsSource: Array(favouritesList.keys)[indexPath.row])
         //print(Array(favouritesList.keys)[indexPath.row])
         

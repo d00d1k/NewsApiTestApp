@@ -10,8 +10,6 @@ import UIKit
 
 class NewsShowCell: UITableViewCell {
     
-    
-    
     @IBOutlet weak var newsImage: UIImageView!
     
     @IBOutlet weak var newsTitleLabel: UILabel!
@@ -27,6 +25,8 @@ class NewsShowCell: UITableViewCell {
     
     func updateCell(with headlines: Article) {
         
+        let errorURL = URL(string: "https://developers.google.com/maps/documentation/streetview/images/error-image-generic.png")
+        
         newsTitleLabel.text = headlines.title
         
         if headlines.description == "" {
@@ -38,7 +38,7 @@ class NewsShowCell: UITableViewCell {
         DispatchQueue.global(qos: .userInitiated).async {
             
             do {
-                let data = try Data(contentsOf: (headlines.urlToImage!))
+                let data = try Data(contentsOf: ((headlines.urlToImage ?? errorURL)!))
                 let myimage = UIImage(data: data)
                 DispatchQueue.main.sync {
                     self.newsImage.image = myimage
@@ -46,9 +46,6 @@ class NewsShowCell: UITableViewCell {
             } catch {
                 debugPrint("img error")
             }
-            
-            
         }
     }
-    
 }
