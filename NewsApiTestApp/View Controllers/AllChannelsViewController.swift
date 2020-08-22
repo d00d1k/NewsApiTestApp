@@ -10,7 +10,9 @@ import UIKit
 
 class AllChannelsViewController: UIViewController {
     
-    var sources = [Source]()
+    var sources = [Source]() {
+        didSet { Source.storeSources(sources) }
+    }
     var favouriteSource: [String:String] = [:]
     
     let defaults = UserDefaults.standard
@@ -31,6 +33,8 @@ class AllChannelsViewController: UIViewController {
  
         tableView.delegate = self
         tableView.dataSource = self
+        
+        sources = Source.retrieveSources() ?? []
         
         getSource()
     }
@@ -78,7 +82,7 @@ extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource 
                 favouriteSource.remove(at: index)
             }
         } else {
-            favouriteSource.updateValue(cell.newsChannelTitleLabel.text!, forKey:sources[cell.favouriteButton.tag].id!)
+            favouriteSource.updateValue(cell.newsChannelTitleLabel.text!, forKey:sources[cell.favouriteButton.tag].id)
         }
         
         //print("addToFavorites \(favouriteSource)")
