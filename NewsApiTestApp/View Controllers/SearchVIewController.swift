@@ -24,17 +24,9 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         
         searchBar.delegate = self
-        searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         self.definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        //searchController.isActive = false
-        //articles.removeAll()
-        tableView.reloadData()
     }
 }
 
@@ -59,15 +51,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
-    
-    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
-        articles = []
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        articles = []
-    }
+extension SearchViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         articles = []
@@ -80,12 +64,6 @@ extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
             articles = []
         }
     }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-
-        tableView.reloadData()
-    }
-    
 }
 
 extension SearchViewController {
@@ -108,21 +86,16 @@ extension SearchViewController {
                 
                 do {
                     let getNews = try decoder.decode(Articles.self, from: data!)
-                    //print("json res -> \(getNews)")
-                    
-                    //self.articles.append(contentsOf: getNews.articles)
                     self.articles = getNews.articles
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
-                    
                 } catch {
                     debugPrint(" searchNews json err pars")
                 }
             }
         }
-        
         dataTask.resume()
     }
 }

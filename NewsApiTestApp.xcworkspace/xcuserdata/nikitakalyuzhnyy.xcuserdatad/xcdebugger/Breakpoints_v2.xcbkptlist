@@ -1,37 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "DAE10395-BCAF-4E87-855A-060607FA3FCA"
+   uuid = "BA4BE696-E34A-4ABE-83FD-022E1469D26C"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "461DF69F-C74D-4AEA-9DF0-1004E6C9DBDA"
+            uuid = "B7E05C3C-FF1C-4005-8C2E-BFD7CE1AB2D2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NewsApiTestApp/NewsChannelCell.swift"
+            filePath = "NewsApiTestApp/View Controllers/FavouriteNewsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "setTitle(title:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "18C94D10-B0CA-4073-9704-510244634713"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NewsApiTestApp/AllChannelsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -39,16 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "48B433DC-D977-420D-B89C-DCEF617B6FD3"
-            shouldBeEnabled = "Yes"
+            uuid = "026F36AC-AEFB-4295-9B8C-FD2AAC0F89E4"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NewsApiTestApp/AllChannelsViewController.swift"
+            filePath = "NewsApiTestApp/NewsShowCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "updateCell(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -18,6 +18,5 @@ class News {
         self.title = title
         self.description = description
     }
-
 }
 

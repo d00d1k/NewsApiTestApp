@@ -7,11 +7,21 @@
 //
 
 import UIKit
+import RealmSwift
+
+class NewsList: Object {
+    //@objc dynamic var newsImage = UIImage()
+    @objc dynamic var newsTitle = ""
+    @objc dynamic var newsDescription = ""
+}
 
 class FavouriteNewsViewController: UIViewController {
     
     let defaults = UserDefaults()
+    let realm = try! Realm()
+    
     lazy var favouritesList = defaults.value(forKeyPath: "favouriteSourceList") as? [String:String] ?? [:]
+    lazy var newsList = realm.objects(NewsList.self)
     
     var articles = [Article]()
     
@@ -30,29 +40,63 @@ class FavouriteNewsViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        //getNews(newsSource: "abc-news-au")
+        
     }
 }
 
 extension FavouriteNewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print("articles \(articles)")
-        print("articles.count \(articles.count)")
+        
+        
+//
+//            print(newsList)
+//
+//            //return articles.count
+//        }
+        
+//        } else {
+//
+//            return newsList.count
+//        }
+        
+//        if articles.count != 0 {
+//
+//            try! realm.write {
+//                realm.deleteAll()
+//            }
+//        }
+        
+        if newsList.count != 0 {
+            return newsList.count
+        }
+        
         return articles.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsShowCell else {
             return UITableViewCell()
         }
-        //getNews(newsSource: Array(favouritesList.keys)[indexPath.row])
-        //print(Array(favouritesList.keys)[indexPath.row])
         
-        let article = articles[indexPath.row]
+        if articles.count != 0 && newsList.count == 0 {
+            
+            let article = articles[indexPath.row]
+            
+            cell.updateCell(with: article)
+            
+        } else if newsList.count != 0 {
+            
+            let newsItem = newsList[indexPath.row]
+            
+            cell.newsTitleLabel.text = newsItem.newsTitle
+            cell.newsDescriptionLabel.text = newsItem.newsDescription
+            
+            print(newsList)
+        }
         
-        cell.updateCell(with: article)
-
         return cell
     }
     
