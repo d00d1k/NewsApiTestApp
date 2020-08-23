@@ -7,28 +7,23 @@
 //
 
 import UIKit
-import RealmSwift
-
-class NewsList: Object {
-    //@objc dynamic var newsImage = UIImage()
-    @objc dynamic var newsTitle = ""
-    @objc dynamic var newsDescription = ""
-}
 
 class FavouriteNewsViewController: UIViewController {
     
     let defaults = UserDefaults()
-    let realm = try! Realm()
     
     lazy var favouritesList = defaults.value(forKeyPath: "favouriteSourceList") as? [String:String] ?? [:]
-    lazy var newsList = realm.objects(NewsList.self)
     
-    var articles = [Article]()
+    var articles = [Article]() {
+        didSet { Article.storeNews(articles) }
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        articles = Article.retrieveNews() ?? []
         
         for newsSource in Array(favouritesList.keys) {
             getNews(newsSource: newsSource)
@@ -48,31 +43,7 @@ extension FavouriteNewsViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
-//
-//            print(newsList)
-//
-//            //return articles.count
-//        }
-        
-//        } else {
-//
-//            return newsList.count
-//        }
-        
-//        if articles.count != 0 {
-//
-//            try! realm.write {
-//                realm.deleteAll()
-//            }
-//        }
-        
-        if newsList.count != 0 {
-            return newsList.count
-        }
-        
         return articles.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,25 +52,12 @@ extension FavouriteNewsViewController: UITableViewDelegate, UITableViewDataSourc
             return UITableViewCell()
         }
         
-        if articles.count != 0 && newsList.count == 0 {
-            
-            let article = articles[indexPath.row]
-            
-            cell.updateCell(with: article)
-            
-        } else if newsList.count != 0 {
-            
-            let newsItem = newsList[indexPath.row]
-            
-            cell.newsTitleLabel.text = newsItem.newsTitle
-            cell.newsDescriptionLabel.text = newsItem.newsDescription
-            
-            print(newsList)
-        }
+        let article = articles[indexPath.row]
+        
+        cell.updateCell(with: article)
         
         return cell
     }
-    
 }
 
 extension FavouriteNewsViewController {
@@ -122,7 +80,6 @@ extension FavouriteNewsViewController {
                 
                 do {
                     let getNews = try decoder.decode(Articles.self, from: data!)
-                    //print("json res -> \(getNews)")
                     
                     self.articles.append(contentsOf: getNews.articles)
                     

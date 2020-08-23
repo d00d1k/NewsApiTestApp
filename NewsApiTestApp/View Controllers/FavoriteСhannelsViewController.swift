@@ -13,7 +13,6 @@ class FavoriteСhannelsViewController: UIViewController {
     let defaults = UserDefaults()
     var favouritesList = [String:String]()
     
-    @IBOutlet weak var showNewsButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
 
     override func viewWillAppear(_ animated: Bool) {
@@ -31,6 +30,7 @@ class FavoriteСhannelsViewController: UIViewController {
 }
 
 //MARK: - Table View Extension
+
 extension FavoriteСhannelsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,16 +67,10 @@ extension FavoriteСhannelsViewController: UITableViewDataSource, UITableViewDel
         if editingStyle == .delete {
                         
             if let index = favouritesList.values.firstIndex(of: Array(favouritesList.values.sorted())[indexPath.row]){
-                print(".delete \(favouritesList)")
                 favouritesList.remove(at: index)
             }
             
             defaults.setValue(favouritesList, forKeyPath: "favouriteSourceList")
-            
-            print("dict after delete\(favouritesList)")
-            
-    
-            print("favouritesList after delete \(favouritesList)")
             
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)

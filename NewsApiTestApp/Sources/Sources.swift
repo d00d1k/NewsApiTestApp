@@ -17,7 +17,7 @@ struct Sources: Codable {
     }
 }
 
-struct Source: Codable, Hashable {
+struct Source: Codable {
     
     var id: String
     var name: String?
@@ -35,31 +35,5 @@ struct Source: Codable, Hashable {
         self.category = category
         self.language = language
         self.country = country
-    }
-    
-    static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let archiveURL = documentsDirectory.appendingPathComponent("sources")
-    
-    static func storeSources(_ sources: [Source]) {
-        let oldSources = retrieveSources() ?? []
-        guard oldSources != sources else { return }
-        let mergedSources = Array(Set(oldSources + sources))
-        do {
-            let data = try PropertyListEncoder().encode(mergedSources)
-            let success = NSKeyedArchiver.archiveRootObject(data, toFile: Source.archiveURL.path)
-            print(success ? "Successful save" : "Save Failed")
-        } catch {
-            print("Save Failed")
-        }
-    }
-    
-    static func retrieveSources() -> [Source]? {
-        guard let data = NSKeyedUnarchiver.unarchiveObject(withFile: Source.archiveURL.path) as? Data else { return nil }
-        do {
-            return try PropertyListDecoder().decode([Source].self, from: data)
-        } catch {
-            print("Retrieve Failed")
-            return nil
-        }
     }
 }

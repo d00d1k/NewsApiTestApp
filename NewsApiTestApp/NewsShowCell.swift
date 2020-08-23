@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import RealmSwift
 
 class NewsShowCell: UITableViewCell {
-    
-    let realm = try! Realm()
     
     @IBOutlet weak var newsImage: UIImageView!
     
@@ -29,23 +26,13 @@ class NewsShowCell: UITableViewCell {
     func updateCell(with headlines: Article) {
         
         let errorURL = URL(string: "https://developers.google.com/maps/documentation/streetview/images/error-image-generic.png")
-
-//        let newsList = NewsList(value: ["newsTitle": headlines.title ?? "No title",
-//                                        "newsDescription": headlines.description ?? "No description"])
-        let newsList = NewsList()
         
-        if headlines.title != "" && headlines.description != "" {
-            
-            newsList.newsTitle = headlines.title ?? "No title"
-            newsList.newsDescription = headlines.description ?? "No description"
-        }
+        newsTitleLabel.text = headlines.title
         
-        newsTitleLabel.text = newsList.newsTitle
-        
-        if newsList.newsDescription == "" {
+        if headlines.description == "" {
             newsDescriptionLabel.text = "No description"
         } else {
-            newsDescriptionLabel.text = newsList.newsDescription
+            newsDescriptionLabel.text = headlines.description
         }
         
         DispatchQueue.global(qos: .userInitiated).async {

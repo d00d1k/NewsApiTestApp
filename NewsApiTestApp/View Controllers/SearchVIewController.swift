@@ -43,7 +43,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let article = articles[indexPath.row]
-        print(article)
         
         cell.updateCell(with: article)
         
@@ -59,6 +58,7 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchController.searchBar.text! != "" {
+            print(searchController.searchBar.text!)
             searchNews(word: searchController.searchBar.text!.lowercased())
         } else {
             articles = []
@@ -86,16 +86,19 @@ extension SearchViewController {
                 
                 do {
                     let getNews = try decoder.decode(Articles.self, from: data!)
+                    
                     self.articles = getNews.articles
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
+                    
                 } catch {
                     debugPrint(" searchNews json err pars")
                 }
             }
         }
+        
         dataTask.resume()
     }
 }

@@ -10,9 +10,7 @@ import UIKit
 
 class AllChannelsViewController: UIViewController {
     
-    var sources = [Source]() {
-        didSet { Source.storeSources(sources) }
-    }
+    var sources = [Source]()
     var favouriteSource: [String:String] = [:]
     
     let defaults = UserDefaults.standard
@@ -33,9 +31,7 @@ class AllChannelsViewController: UIViewController {
  
         tableView.delegate = self
         tableView.dataSource = self
-        
-        sources = Source.retrieveSources() ?? []
-        
+                
         getSource()
     }
 }
@@ -59,9 +55,7 @@ extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource 
         } else {
             cell.favouriteButton.setTitle("-", for: UIControl.State.normal)
         }
-        
-        //print("sources\(sources)")
-                
+                        
         cell.favouriteButton.tag = indexPath.row
         cell.favouriteButton.addTarget(self, action: #selector(addToFavorites), for: UIControl.Event.touchUpInside)
         
@@ -85,7 +79,6 @@ extension AllChannelsViewController: UITableViewDelegate, UITableViewDataSource 
             favouriteSource.updateValue(cell.newsChannelTitleLabel.text!, forKey:sources[cell.favouriteButton.tag].id)
         }
         
-        //print("addToFavorites \(favouriteSource)")
         tableView.reloadData()
         
         defaults.setValue(favouriteSource, forKeyPath: "favouriteSourceList")
@@ -108,12 +101,11 @@ extension AllChannelsViewController {
         let session = URLSession.shared
         let dataTask = session.dataTask(with: url!) { (data, response, error) in
             if error == nil && data != nil {
-                //parse JSON
+                
                 let decoder = JSONDecoder()
                 
                 do {
                     let getSources = try decoder.decode(Sources.self, from: data!)
-                    //print("json res -> \(getSources)")
                     
                     self.sources = getSources.sources
                     

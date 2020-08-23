@@ -8,9 +8,8 @@
 
 import Foundation
 
-struct SourceNews: Codable {
+struct SourceNews: Codable, Hashable {
     
     var id: String?
     var name: String?
-    
 }

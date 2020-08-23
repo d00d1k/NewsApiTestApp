@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="rQ1-WU-sBc">
             <objects>
                 <viewController id="Sr7-RW-Kca" customClass="SearchViewController" customModule="NewsApiTestApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -117,7 +117,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4P6-KX-Ex0"/>
                     </view>
-                    <navigationItem key="navigationItem" id="s5c-Jd-nK6"/>
+                    <navigationItem key="navigationItem" title="Search" id="s5c-Jd-nK6"/>
                     <connections>
                         <outlet property="tableView" destination="bqg-IC-9JP" id="VAf-j4-WFK"/>
                     </connections>
@@ -200,34 +200,24 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="cH7-oZ-lMQ"/>
                                 </connections>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29s-dQ-2Du">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <navigationItem title="All channels" id="mjT-eg-9uP"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="29s-dQ-2Du" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="3ht-od-Mxo"/>
-                            <constraint firstItem="29s-dQ-2Du" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="MQd-lA-sxz"/>
                             <constraint firstItem="498-ld-2mg" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="WlJ-g8-Te6"/>
                             <constraint firstItem="498-ld-2mg" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="ZlO-fO-zPW"/>
-                            <constraint firstItem="498-ld-2mg" firstAttribute="top" secondItem="29s-dQ-2Du" secondAttribute="bottom" id="elr-Wq-tau"/>
                             <constraint firstItem="498-ld-2mg" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="pJH-Sq-7HZ"/>
-                            <constraint firstItem="29s-dQ-2Du" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="v1U-nr-zaQ"/>
+                            <constraint firstItem="498-ld-2mg" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="wk3-Ci-tzR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="All channels" image="list.bullet" catalog="system" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" title="All channels" id="XV9-vB-9lf"/>
                     <connections>
                         <outlet property="tableView" destination="498-ld-2mg" id="FaG-gL-CyL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="567" y="-1299"/>
+            <point key="canvasLocation" x="1476.8115942028987" y="-1299.1071428571429"/>
         </scene>
         <!--Favourites-->
         <scene sceneID="wg7-f3-ORb">
@@ -298,7 +288,7 @@
             </objects>
             <point key="canvasLocation" x="1582.608695652174" y="-609.375"/>
         </scene>
-        <!--Favourite News View Controller-->
+        <!--News-->
         <scene sceneID="iJB-84-HP4">
             <objects>
                 <viewController id="vpT-ST-UC7" customClass="FavouriteNewsViewController" customModule="NewsApiTestApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -327,9 +317,9 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yac-n9-fHT">
-                                                                <rect key="frame" x="0.0" y="0.0" width="468" height="109"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="87"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uii-YY-K0h">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="468" height="109"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="87"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 </view>
                                                                 <vibrancyEffect>
@@ -407,7 +397,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Pp-2Y-9ms"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Fi1-yx-hey"/>
+                    <navigationItem key="navigationItem" title="News" id="Fi1-yx-hey"/>
                     <connections>
                         <outlet property="tableView" destination="HDR-E6-mvM" id="whA-sA-GMd"/>
                     </connections>
@@ -426,7 +416,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="195-BT-qUY" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="a88-bB-IfP" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="VRX-V4-7uV" kind="relationship" relationship="viewControllers" id="61U-1H-dsu"/>
                     </connections>
@@ -472,6 +462,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iL0-Hq-xk3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="566.66666666666674" y="122.54464285714285"/>
+        </scene>
+        <!--All channels-->
+        <scene sceneID="ajc-Yk-OGK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="195-BT-qUY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="All channels" image="list.bullet" catalog="system" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="De2-Ro-OtO">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="wV1-xD-mBZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IFR-ta-GpN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="566.66666666666674" y="-1299.1071428571429"/>
         </scene>
     </scenes>
     <resources>
