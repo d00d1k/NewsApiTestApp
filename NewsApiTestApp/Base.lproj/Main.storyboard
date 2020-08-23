@@ -281,6 +281,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="showNewsButton" destination="yOz-sp-5r8" id="0fb-Ky-2o9"/>
                         <outlet property="tableView" destination="77w-OA-WD1" id="kP6-JG-EMz"/>
                     </connections>
                 </viewController>

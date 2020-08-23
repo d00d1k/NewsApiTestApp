@@ -23,15 +23,13 @@ class FavouriteNewsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        articles = Article.retrieveNews() ?? []
-        
-        for newsSource in Array(favouritesList.keys) {
-            getNews(newsSource: newsSource)
-        }
+        getNews(newsSource: Array(favouritesList.keys))
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        articles = Article.retrieveNews() ?? []
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -62,11 +60,14 @@ extension FavouriteNewsViewController: UITableViewDelegate, UITableViewDataSourc
 
 extension FavouriteNewsViewController {
     
-    func getNews(newsSource: String) {
+    func getNews(newsSource: [String]) {
         
         guard var urlComponents = URLComponents(string: "https://newsapi.org/v2/top-headlines?") else { return }
         
-        urlComponents.query = "sources=\(newsSource)&apiKey=debbf0c53d1a453d86c219dbde1932c1"
+        let stringRepresentation = newsSource.joined(separator: ",")
+        print(stringRepresentation)
+        
+        urlComponents.query = "sources=\(stringRepresentation)&apiKey=debbf0c53d1a453d86c219dbde1932c1"
         
         guard let url = urlComponents.url else {
             debugPrint("url is nil")

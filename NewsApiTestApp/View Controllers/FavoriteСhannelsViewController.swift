@@ -13,6 +13,7 @@ class FavoriteСhannelsViewController: UIViewController {
     let defaults = UserDefaults()
     var favouritesList = [String:String]()
     
+    @IBOutlet weak var showNewsButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,15 +35,18 @@ class FavoriteСhannelsViewController: UIViewController {
 extension FavoriteСhannelsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print("tableView numberOfRowsInSection \(favouritesList)")
-        
+                
         favouritesList = defaults.value(forKeyPath: "favouriteSourceList") as? [String:String] ?? [:]
+        
+        showNewsButton.isEnabled = true
         
         if favouritesList == [:] {
             let alert = UIAlertController(title: "", message: "Please add any source", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
+            
+            showNewsButton.isEnabled = false
+            
             return 0
         }
 

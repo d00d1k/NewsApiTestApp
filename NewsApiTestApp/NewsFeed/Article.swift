@@ -18,7 +18,6 @@ struct Articles: Codable, Hashable {
 
 struct Article: Codable, Hashable {
     
-    
     var source: SourceNews?
     var author: String?
     var title: String?
@@ -47,7 +46,7 @@ struct Article: Codable, Hashable {
     static func storeNews(_ articles: [Article]) {
         let oldNews = retrieveNews() ?? []
         guard oldNews != articles else { return }
-        let mergedNews = Array(Set(articles))
+        let mergedNews = Array(Set(articles + oldNews))
         do {
             let data = try PropertyListEncoder().encode(mergedNews)
             let success = NSKeyedArchiver.archiveRootObject(data, toFile: Article.archiveURL.path)
